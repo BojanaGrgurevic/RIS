@@ -65,6 +65,41 @@ public class EasyFoodController {
 		return k.getRoll();
 
 	}
+	
+	@RequestMapping(value = "registration", method = RequestMethod.POST)
+	public String registration(HttpServletRequest request, String username, String pass, String ime, String prezime,
+			String email, String tel) {
+		Korisnik k = new Korisnik();
+		k.setUsername(username);
+		k.setPass(pass);
+		k.setIme(ime);
+		k.setPrezime(prezime);
+		k.setEmail(email);
+		k.setTel(tel);
+		k.setRoll("korisnik");
+
+		String msg;
+
+		if (kr.findByUsername(username).size() == 0) {
+			kr.save(k);
+			msg = "Uspesno ste se registrovali";
+		} else {
+			msg = "Username vec postoji u bazi!";
+
+			request.getSession().setAttribute("msg", msg);
+		}
+
+		return "index";
+	}
+	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "index";
+	}
+
+
+
 
 	
 	
