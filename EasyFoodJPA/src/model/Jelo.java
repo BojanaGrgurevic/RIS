@@ -25,6 +25,8 @@ public class Jelo implements Serializable {
 	private String naziv;
 
 	private String vrstaKuhinje;
+	
+	private String slika;
 
 	//bi-directional many-to-one association to Kategorija
 	@ManyToOne
@@ -88,6 +90,16 @@ public class Jelo implements Serializable {
 
 	public void setKategorija(Kategorija kategorija) {
 		this.kategorija = kategorija;
+	}
+	
+	
+
+	public String getSlika() {
+		return slika;
+	}
+
+	public void setSlika(String slika) {
+		this.slika = slika;
 	}
 
 	public List<Komentar> getKomentars() {

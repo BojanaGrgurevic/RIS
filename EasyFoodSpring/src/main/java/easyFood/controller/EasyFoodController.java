@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,6 +17,8 @@ import easyFood.repository.KomentarRepo;
 import easyFood.repository.KorisnikRepo;
 import easyFood.repository.NarucenojeloRepo;
 import easyFood.repository.NarudzbinaRepo;
+import model.Jelo;
+import model.Kategorija;
 import model.Korisnik;
 
 @Controller
@@ -61,6 +64,16 @@ public class EasyFoodController {
 		}
 
 		request.getSession().setAttribute("user", k);
+		
+		List<Kategorija> kategorije = ka.findAll();
+		request.getSession().setAttribute("kategorije", kategorije);
+
+		List<String> vrstaKuhinje = jr.getVrstaKuhinje();
+		request.getSession().setAttribute("vrsta", vrstaKuhinje);
+
+		List<Jelo> jela = jr.findAll();
+		request.getSession().setAttribute("jela", jela);
+
 
 		return k.getRoll();
 
@@ -97,6 +110,32 @@ public class EasyFoodController {
 		request.getSession().invalidate();
 		return "index";
 	}
+	
+	@RequestMapping(value = "getByVrsta", method = RequestMethod.GET)
+	public String getByVrsta(String vrstaKuh, Model m) {
+		List<Jelo> jelo = jr.findByVrstaKuhinje(vrstaKuh);
+		m.addAttribute("jela", jelo);
+		return "korisnik";
+	}
+
+	@RequestMapping(value = "getByKategorija", method = RequestMethod.GET)
+	public String getByKategorija(int kategorija, Model m) {
+		Kategorija k = ka.getOne(kategorija);
+		List<Jelo> jeloK = jr.findByKategorija(k);
+		m.addAttribute("jela", jeloK);
+		return "korisnik";
+	}
+	
+	@RequestMapping(value = "getJela", method = RequestMethod.POST)
+	public String getJela(HttpServletRequest request) {
+
+		List<Jelo> jela = jr.findAll();
+		request.getSession().setAttribute("jela", jela);
+
+		return "korisnik";
+	}
+
+
 
 
 

@@ -74,14 +74,97 @@ body {
 	<div class="container">
 		<a class="navbar-brand js-scroll-trigger" href="/EasyFood/${user.roll}.jsp">Pocetna</a>
 		
-
-               <ul class="navbar-nav ml-auto">
-				<li class="nav-item mx-0 mx-lg-1"><a
-					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-					href="/EasyFood/logout">Izloguj se</a></li>
-                 </ul>
+          <a style="margin-right: 5px" href="/EasyFood/logout">Izloguj se</a> 
+			
+          
+                 
 	</div>
 	</nav>
+	
+	<header >
+	
+	</header>
+	
+			<br>
+		<div class="row">
+			<div class=col-3>
+			<form action="/EasyFood/getJela" method="post">
+					
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-l"
+							id="sendMessageButton">Sva jela</button>
+					</div>
+				</form>
+		<p class="text-center text-uppercase text-secondary mb-0">Pretraga
+			po vrsti</p>
+		<br>
+				<form action="/EasyFood/getByVrsta" method="get">
+					<div class="form-group  mb-0 pb-2">
+						<select class="form-control" name="vrstaKuh">
+							<c:forEach items="${vrsta}" var="v">
+								<option value="${v}">${v}</option>
+
+							</c:forEach>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-l"
+							id="sendMessageButton">Pretraga</button>
+					</div>
+				</form>
+		
+			
+		<p class="text-center text-uppercase text-secondary mb-0">Pretraga
+			po kategoriji</p>
+		<br>
+				<form action="/EasyFood/getByKategorija" method="get">
+
+					<div class="form-group  mb-0 pb-2">
+						<select class="form-control" name="kategorija">
+							<c:forEach items="${kategorije}" var="k">
+								<option value="${k.idKategorija}">${k.nazivKategorije}</option>
+
+							</c:forEach>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-l"
+							id="sendMessageButton">Pretraga</button>
+					</div>
+
+
+				</form>
+			
+			</div>
+			
+			<div class="col">
+				<div class="row">
+					<c:forEach items="${jela}" var="j" varStatus="loop">
+						<div class="col">
+							<div class="card" style="width: 10rem;">
+								<img src="img/${j.slika}" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">${j.naziv}</h5>
+									<p class="card-text">${j.cena} rsd</p>
+									<p class="card-text">${j.vrstaKuhinje}</p>
+									<p class="card-text">${j.kategorija.nazivKategorije}</p>
+									<a href="#" class="btn btn-primary">Detaljnije</a><br>
+									
+									
+									
+								</div>
+							</div>
+						</div>
+						<c:if test="${(loop.index+1) % 2 != 1}">
+							<div class="w-100"></div>
+						</c:if>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
 
 
 
