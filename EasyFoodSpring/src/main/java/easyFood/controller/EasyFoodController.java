@@ -398,7 +398,7 @@ public class EasyFoodController {
 					if (jelo.getJelo().getNaziv().equals(nj.getJelo().getNaziv())) {
 						ok=true;
 						jelo.setKolicina(jelo.getKolicina()+nj.getKolicina());
-						break; // mozda nije potrebno
+						break;
 					}
 				}
 				if(!ok) {
