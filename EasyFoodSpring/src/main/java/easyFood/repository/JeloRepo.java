@@ -11,6 +11,7 @@ import model.Kategorija;
 public interface JeloRepo extends JpaRepository<Jelo, Integer> {
 	
 	@Query("select distinct j.vrstaKuhinje from Jelo j")
+	
 	List<String> getVrstaKuhinje();
 	
 	List<Jelo> findByVrstaKuhinje(String vrstaKuhinje);

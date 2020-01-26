@@ -10,6 +10,6 @@ public interface KorisnikRepo extends JpaRepository<Korisnik, Integer> {
 	
 	List<Korisnik> findByUsername(String username);
 	
-	
+	List<Korisnik> findByRoll(String r);
 
 }

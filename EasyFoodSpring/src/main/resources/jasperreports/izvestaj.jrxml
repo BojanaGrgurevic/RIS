@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="izvestaj" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4600cbd-0809-45d3-8d96-8fcd8e42d723">
+	<parameter name="od" class="java.util.Date"/>
+	<parameter name="do" class="java.util.Date"/>
+	<parameter name="suma" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="jelo.naziv" class="java.lang.String"/>
+	<field name="kolicina" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="38" width="60" height="30" uuid="bf629dcc-9c5d-439f-b2b3-161583c6d3f0"/>
+				<text><![CDATA[Od:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="38" width="89" height="29" uuid="7fd46cbb-c874-468d-b224-fa955a21f25e"/>
+				<textFieldExpression><![CDATA[$P{od}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="38" width="60" height="30" uuid="6305e81d-5434-4fb2-8db8-0f2becc8a87c"/>
+				<text><![CDATA[Do:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="38" width="100" height="30" uuid="57221228-d8c0-4bed-a59d-15932e1c49f6"/>
+				<textFieldExpression><![CDATA[$P{do}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="78" width="80" height="30" uuid="81b9ed96-4b5f-47ae-bca8-8e404e61647c"/>
+				<text><![CDATA[Ukupno:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="79" width="89" height="29" uuid="77a21464-e594-49f8-800f-e0c579ed283b"/>
+				<textFieldExpression><![CDATA[$P{suma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="161" y="0" width="269" height="29" uuid="ca6e118f-2979-4528-ab56-f9144707ffa5"/>
+				<text><![CDATA[EasyFood]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="3" width="100" height="30" uuid="494d64b4-c2b0-4623-882c-bd9a2ee091cd"/>
+				<text><![CDATA[Jelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="3" width="100" height="30" uuid="54766362-8a01-480e-9cbe-76967a9bd828"/>
+				<text><![CDATA[Kolicina]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="130" y="0" width="100" height="30" uuid="696846dc-049d-4971-9c11-fb0ddd58df65"/>
+				<textFieldExpression><![CDATA[$F{jelo.naziv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="100" height="30" uuid="6621035d-5142-4712-aca0-23ef5a2b6391"/>
+				<textFieldExpression><![CDATA[$F{kolicina}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="490" y="20" width="60" height="30" uuid="8e505bcb-78fc-4786-84d1-423dbea735cf"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
